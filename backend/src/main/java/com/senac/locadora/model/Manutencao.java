@@ -1,19 +1,10 @@
 package com.senac.locadora.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "manutencoes")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Manutencao {
 
     @Id
@@ -21,17 +12,65 @@ public class Manutencao {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "veiculo_id", nullable = false)
+    @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 
-    @Column(nullable = false, length = 200)
     private String descricao;
 
-    @Column(nullable = false)
     private LocalDate dataInicio;
 
     private LocalDate dataFim;
 
-    @Column(nullable = false)
     private Double custo;
+
+    public Manutencao() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public LocalDate getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public LocalDate getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Double getCusto() {
+        return custo;
+    }
+
+    public void setCusto(Double custo) {
+        this.custo = custo;
+    }
 }

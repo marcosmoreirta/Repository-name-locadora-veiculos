@@ -4,10 +4,12 @@ server:
 spring:
   application:
     name: locadora-backend
+
   datasource:
-    url: jdbc:postgresql://localhost:5439/locadora_db
+    url: jdbc:postgresql://localhost:55432/locadora
     username: postgres
     password: postgres
+
   jpa:
     hibernate:
       ddl-auto: update
