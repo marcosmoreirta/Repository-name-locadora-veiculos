@@ -6,9 +6,10 @@ spring:
     name: locadora-backend
 
   datasource:
-    url: jdbc:postgresql://localhost:55432/locadora
+    url: jdbc:postgresql://db.lfwnobgihdkskkazryzj.supabase.co:5432/postgres
     username: postgres
-    password: postgres
+    password: o3goN2KmdxpfpgER
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
@@ -17,3 +18,4 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
