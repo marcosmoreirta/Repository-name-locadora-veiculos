@@ -7,7 +7,8 @@ function diasEntre(inicio: string, fim: string): number {
   const d2 = new Date(fim);
 
   const diff = Math.round(
-    (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24)
+    (d2.getTime() - d1.getTime()) /
+      (1000 * 60 * 60 * 24)
   );
 
   return diff > 0 ? diff : 0;
@@ -31,9 +32,8 @@ export default function LocacoesPage() {
 
   const [preview, setPreview] = useState(0);
 
-  const [dataDevolucao, setDataDevolucao] = useState<
-    Record<number, string>
-  >({});
+  const [dataDevolucao, setDataDevolucao] =
+    useState<Record<number, string>>({});
 
   async function carregar() {
     try {
@@ -228,7 +228,6 @@ export default function LocacoesPage() {
           className="grid-form"
           onSubmit={handleSubmit}
         >
-          {/* VEÍCULO */}
           <select
             value={form.veiculoId}
             onChange={(e) =>
@@ -241,7 +240,7 @@ export default function LocacoesPage() {
           >
             <option value="">
               {veiculos.length === 0
-                ? 'Nenhum veículo disponível'
+                ? 'Nenhum veículo cadastrado'
                 : 'Selecione o veículo'}
             </option>
 
@@ -256,7 +255,6 @@ export default function LocacoesPage() {
             ))}
           </select>
 
-          {/* CLIENTE */}
           <select
             value={form.clienteId}
             onChange={(e) =>
@@ -283,7 +281,6 @@ export default function LocacoesPage() {
             ))}
           </select>
 
-          {/* SEGURO */}
           <select
             value={form.seguroId}
             onChange={(e) =>
@@ -307,7 +304,6 @@ export default function LocacoesPage() {
             ))}
           </select>
 
-          {/* DATA INÍCIO */}
           <input
             type="date"
             value={form.dataInicio}
@@ -320,7 +316,6 @@ export default function LocacoesPage() {
             required
           />
 
-          {/* DATA FIM */}
           <input
             type="date"
             value={form.dataFimPrevista}
@@ -360,7 +355,7 @@ export default function LocacoesPage() {
               <th>Seguro</th>
               <th>Total</th>
               <th>Status</th>
-              <th></th>
+              <th>Ações</th>
             </tr>
           </thead>
 
@@ -419,20 +414,19 @@ export default function LocacoesPage() {
                         <input
                           type="date"
                           value={
-                            dataDevolucao[l.id] ||
-                            ''
+                            dataDevolucao[l.id] || ''
                           }
                           min={l.dataInicio}
                           onChange={(e) =>
                             setDataDevolucao({
                               ...dataDevolucao,
-                              [l.id]:
-                                e.target.value,
+                              [l.id]: e.target.value,
                             })
                           }
                         />
 
                         <button
+                          type="button"
                           className="btn-secondary"
                           onClick={() =>
                             handleFinalizar(l.id)
